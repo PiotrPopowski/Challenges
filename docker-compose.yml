@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  grafana:
+    image: grafana/grafana-enterprise
+
+  prometheus:
+    build: ./Prometheus
+
+  challenges.api:
+    image: ${DOCKER_REGISTRY-}challengesapi
+    build:
+      context: .
+      dockerfile: Challenges.API/Dockerfile
