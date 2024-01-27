@@ -1,5 +1,5 @@
-using App.Metrics;
 using Challenges.API.Behaviors;
+using Challenges.API.Configuration;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 namespace Challenges.API
@@ -12,12 +12,8 @@ namespace Challenges.API
 
             builder.Services.Configure<KestrelServerOptions>(opt => opt.AllowSynchronousIO = true);
             builder.Logging.AddConsole();
-            // Add services to the container.
-
-            var metrics = AppMetrics.CreateDefaultBuilder().Build();
-            builder.Services.AddMetrics(metrics);
-            builder.Services.AddMetricsEndpoints();
-            builder.Services.AddMetricsTrackingMiddleware();
+            // Add Metrics
+            builder.Services.AddWebMetrics();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -33,8 +29,9 @@ namespace Challenges.API
             builder.Services.AddLogging();
 
             var app = builder.Build();
-            app.UseMetricsAllEndpoints();
-            app.UseMetricsAllMiddleware();
+
+            app.UseRouting();
+            app.UseWebMetrics();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

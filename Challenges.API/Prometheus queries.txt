@@ -1,0 +1,3 @@
+# Show avg endpoint response duration:
+sum(rate(http_request_duration_seconds_sum[1m])) by (endpoint) / sum(rate(http_request_duration_seconds_count[1m])) by (endpoint)
+sum(rate(http_request_duration_seconds_sum[1m])) by (endpoint) / sum(rate(http_request_duration_seconds_count[1m])) by (endpoint) > 0.8

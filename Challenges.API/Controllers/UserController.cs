@@ -16,13 +16,13 @@ namespace Challenges.API.Controllers
             _mediator = mediator;
         }
 
-        [HttpPost]
+        [HttpPost("create")]
         public async Task CreateUser([FromBody]CreateUser command)
         {
             await _mediator.Send(command);
         }
 
-        [HttpGet]
+        [HttpGet("password")]
         public async Task<string> GetPassword([FromQuery]GetUserPasswordQuery query)
         {
             return await _mediator.Send(query);

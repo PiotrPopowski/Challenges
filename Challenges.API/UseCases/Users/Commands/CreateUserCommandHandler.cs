@@ -16,6 +16,8 @@ namespace Challenges.API.UseCases.Users.Commands
 
         public async Task Handle(CreateUser request, CancellationToken cancellationToken)
         {
+            var rng = new Random();
+            await Task.Delay(rng.Next(20, 1000));
             await _cache.SetStringAsync(request.username, request.password);
         }
     }
