@@ -4,7 +4,14 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            var list = new Queue<string>();
+
+            var newList = list.RemoveEvery(1);
+        }
+
+        public struct MyValue
+        {
+            public int Value { get; set; }
         }
     }
 }
