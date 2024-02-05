@@ -4,9 +4,12 @@ namespace EF.API.Entities
 {
     public class Driver
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; private set; }
         public Name Name { get; set; }
-        public Company Company { get; set; }
+        public Company Company { get; private set; }
+        public List<License> Licenses { get; private set; } = new List<License>();
+
+        protected Driver() { }
 
         public Driver(Name name, Company company)
         {

@@ -2,15 +2,17 @@
 {
     public record Registration
     {
-        public string Country { get; }
-        public string Number { get; }
+        public string Country { get; private set; }
+        public string Number { get; private set; }
 
-        public Registration(string country, string number)
+        private Registration() { }
+
+        public Registration(string Country, string Number)
         {
-            if (number?.Length != 6) throw new ApplicationException("Registration number must have 6 characters.");
+            if (Number?.Length != 6) throw new ApplicationException("Registration number must have 6 characters.");
 
-            Country = country;
-            Number = number;
+            this.Country = Country;
+            this.Number = Number;
         }
 
     }

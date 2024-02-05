@@ -7,11 +7,11 @@ namespace EF.API.Persistence
     {
         public DbSet<Company> Companies { get; set; }
         public DbSet<Driver> Drivers { get; set; }
-        public DbSet<Vehicle> Schedules { get; set; }
+        public DbSet<Schedule> Schedules { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
 
 
-        public ApplicationDbContext(DbContextOptions options) : base(options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
 

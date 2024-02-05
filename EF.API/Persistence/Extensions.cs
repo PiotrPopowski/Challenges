@@ -4,7 +4,7 @@ namespace EF.API.Persistence
 {
     public static class Extensions
     {
-        public static IServiceCollection AddMSSQL(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddMSSql(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<ApplicationDbContext>(opt =>
             {
@@ -12,6 +12,13 @@ namespace EF.API.Persistence
             });
 
             return services;
+        }
+
+        public static void ApplyMigrations(this IApplicationBuilder app)
+        {
+            var context = app.ApplicationServices.CreateScope().ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            context.Database.Migrate();
+            ApplicationDatabaseSeed.Seed(context).Wait();
         }
     }
 }

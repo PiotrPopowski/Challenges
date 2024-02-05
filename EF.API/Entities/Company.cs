@@ -4,12 +4,14 @@
     {
         public Guid Id { get; private set; }
         public string Name { get; private set; }
-        public List<Driver> Drivers { get; private set; } = new List<Driver>();
+        public virtual List<Driver> Drivers { get; private set; } = new List<Driver>();
         public List<Vehicle> Vehicles { get; private set; } = new List<Vehicle>();
 
-        public Company(Guid id, string name)
+        private Company() { }
+
+        public Company(string name)
         {
-            Id = id;
+            Id = Guid.NewGuid();
             Name = name;
         }
     }

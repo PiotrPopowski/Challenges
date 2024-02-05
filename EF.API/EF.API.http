@@ -4,3 +4,24 @@ GET {{EF.API_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+
+GET {{EF.API_HostAddress}}/Companies
+
+###
+
+POST {{EF.API_HostAddress}}/Company
+
+###
+
+POST {{EF.API_HostAddress}}/Schedule
+
+###
+
+POST {{EF.API_HostAddress}}/Vehicle
+
+###
+
+
+POST {{EF.API_HostAddress}}/Driver
+
+###

@@ -5,7 +5,7 @@ namespace EF.API.Entities
     public class Vehicle
     {
         public Guid Id { get; private set; }
-        public Registration Registration { get; private set; }
+        public Registration Registration { get; set; }
 
         private Vehicle() { }
 
