@@ -1,0 +1,23 @@
+language: csharp
+dist: trusty
+sudo: required
+mono: none
+dotnet: 8.0.1
+branches:
+  only:
+    - EntityFramework
+before_script:
+  - chmod -R a+x scripts
+script:
+  - dotnet restore
+  - dotnet build
+after_success:
+  - dotnet publish ./EF.API -c Release -o ./bin/Docker
+  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+  - docker build -f ./EF.API/Dockerfile -t EF.API:latest ./EF.API
+  - docker tag EF.API:latest $DOCKER_USERNAME/EF.API:latest
+  - docker push $DOCKER_USERNAME/EF.API:latest
+notifications:
+  email:
+    on_success: never
+    on_failure: always
