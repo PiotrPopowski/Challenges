@@ -1,7 +1,9 @@
-name: deploy
+name: Deploy
+
 on:
   pull_request:
     branches: EntityFramework
+    types: [closed]
 
 jobs:
   deploy:
