@@ -1,0 +1,17 @@
+name: deploy
+on:
+  pull_request:
+    branches: EntityFramework
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: Docker
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Docker Image
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/ef-api:latest -f ./EF.API/Dockerfile .
+      - name: Login to Docker
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - name: Push Docker Image
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/ef-api:latest
