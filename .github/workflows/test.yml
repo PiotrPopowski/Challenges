@@ -19,6 +19,6 @@ jobs:
       with:
         dotnet-version: 8.x
     - name: Restore dependencies
-      run: dotnet restore --no-build
+      run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
