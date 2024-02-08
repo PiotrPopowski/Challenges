@@ -19,6 +19,6 @@ jobs:
       with:
         dotnet-version: 8.x
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore EF.API
     - name: Build
       run: dotnet build EF.API --no-restore
