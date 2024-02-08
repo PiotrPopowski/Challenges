@@ -22,3 +22,10 @@ jobs:
       run: dotnet restore EF.API
     - name: Build
       run: dotnet build EF.API --no-restore
+    - name: Publish
+      run: dotnet publish EF.API -c Release -o ${{ env.DOTNET_ROOT }}/api
+    - name: Create Artifact
+      uses: actions/upload-artifact@v4.3.1
+      with:
+        name: EF-API
+        path: ${{ env.DOTNET_ROOT }}/api
