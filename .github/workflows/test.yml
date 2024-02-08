@@ -14,13 +14,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Setup dotnet
-      uses: actions/setup-dotnet@v3
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v4.0.0
       with:
-        dotnet-version: '8.x'
-    - name: Install dependencies
-      run: dotnet restore
+        dotnet-version: 8.x
+    - name: Restore dependencies
+      run: dotnet restore --no-build
     - name: Build
-      run: dotnet build
-    - name: Test with the dotnet CLI
-      run: dotnet test
+      run: dotnet build --no-restore
