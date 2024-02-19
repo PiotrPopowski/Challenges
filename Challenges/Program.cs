@@ -4,7 +4,12 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            ActionRunner ar = new ActionRunner();
+
+            ar.Run();
+            Task.Delay(1200).Wait();
+
+            Console.WriteLine("Hey there.");
         }
     }
 }
