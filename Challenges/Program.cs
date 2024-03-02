@@ -1,10 +1,12 @@
-﻿namespace Challenges
+﻿using BenchmarkDotNet.Running;
+
+namespace Challenges
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            BenchmarkRunner.Run<PolicyBenchmark>();
         }
     }
 }
