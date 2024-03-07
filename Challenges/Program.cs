@@ -1,10 +1,18 @@
-﻿namespace Challenges
+﻿using Challenges.Services;
+using Challenges.Algorithms;
+
+namespace Challenges
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            ApplicationRunner runner = 
+                new ApplicationRunner(
+                    new PrimeNumberChecker(
+                        new EratosthenesSieve()));
+            
+            runner.Run();
         }
     }
 }
