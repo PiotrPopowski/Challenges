@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  mongodb:
+    image: mongo
+
+  fetcher.api:
+    image: ${DOCKER_REGISTRY-}fetcherapi
+    build:
+      context: .
+      dockerfile: Fetcher.API/Dockerfile
